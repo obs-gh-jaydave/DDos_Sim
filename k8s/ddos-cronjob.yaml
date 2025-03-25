@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ddos-simulator
+  namespace: astronomy
+spec:
+  schedule: "*/10 * * * *"  # every 10 minutes
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: ddos-sim
+              image: <AWS_ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/ddos-sim:latest
+              imagePullPolicy: Always
+              resources:
+                limits:
+                  cpu: 100m
+                  memory: 128Mi
+              env:
+                - name: TARGET_URL
+                  value: "http://astronomy-app.checkout.svc.cluster.local/checkout"
