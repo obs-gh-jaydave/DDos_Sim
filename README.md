@@ -56,11 +56,30 @@ You should see structured logs like:
 
 ```bash
 {
-  "event": "ddos_simulated_request",
-  "timestamp": "2025-03-25T12:35:12Z",
-  "source_ip": "203.0.113.3",
-  "target": "/checkout",
-  "status_code": 500,
+  "timestamp": "2025-03-26T00:39:34.592263Z",
+  "geo": {
+    "lat": 23.1291,
+    "lon": 113.2644,
+    "country": "CN"
+  },
+  "network": {
+    "source_ip": "203.0.113.12",
+    "asn": "AS4134",
+    "traceroute": [
+      "10.190.170.61",
+      "10.46.63.159",
+      "10.31.25.136",
+      "10.225.17.17",
+      "10.225.205.142",
+      "10.76.217.97"
+    ]
+  },
+  "http": {
+    "method": "UNKNOWN",
+    "status": 599,
+    "latency": null
+  },
+  "attack_vector": "http_flood",
   "suspicious": true,
   "attack_type": "ddos"
 }
